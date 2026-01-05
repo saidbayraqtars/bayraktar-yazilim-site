@@ -9,6 +9,20 @@
         content="Bayraktar Yazılım iletişim bilgileri. Samsun İlkadım bilgisayar tamiri ve yazılım hizmetleri.">
     <link rel="icon" type="image/png" href="assets/favicon.png">
 
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17461976027"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'AW-17461976027');
+    </script>
+
+    <!-- Event snippet for Kişi conversion page -->
+    <script>
+        gtag('event', 'conversion', { 'send_to': 'AW-17461976027/WnGkCJnN3J8bENu3woZB' });
+    </script>
+
     <!-- Fonts & CSS -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
@@ -155,204 +169,43 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <!DOCTYPE html>
-                <html lang="tr">
+                <p>&copy; 2025 Bayraktar Yazılım. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
 
-                <head>
-                    <meta charset="UTF-8">
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <title>İletişim | Bayraktar Yazılım</title>
-                    <meta name="description"
-                        content="Bayraktar Yazılım iletişim bilgileri. Samsun İlkadım bilgisayar tamiri ve yazılım hizmetleri.">
-                    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <script src="js/main.js"></script>
+    <script>
+        // WhatsApp Form Submission
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
 
-                    <!-- Fonts & CSS -->
-                    <link
-                        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-                        rel="stylesheet">
-                    <link rel="stylesheet" href="css/global.css">
-                    <link rel="stylesheet" href="css/pages.css">
-                    <link rel="stylesheet"
-                        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-                </head>
+            // Get form values
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const service = document.getElementById('service').options[document.getElementById('service').selectedIndex].text;
+            const message = document.getElementById('message').value;
 
-                <body>
+            // Format WhatsApp message
+            const whatsappMessage = `*Yeni İletişim Formu Mesajı*%0A%0A` +
+                `*İsim:* ${name}%0A` +
+                `*Telefon:* ${phone}%0A` +
+                `*E-posta:* ${email}%0A` +
+                `*Hizmet:* ${service}%0A` +
+                `*Mesaj:* ${message}`;
 
-                    <!-- Navbar -->
-                    <nav class="navbar">
-                        <div class="container nav-container">
-                            <a href="index.html" class="logo">Bayraktar<span>Yazılım</span></a>
-                            <div class="hamburger">
-                                <div class="bar"></div>
-                                <div class="bar"></div>
-                                <div class="bar"></div>
-                            </div>
-                            <ul class="nav-links">
-                                <li><a href="index.html">Ana Sayfa</a></li>
-                                <li><a href="hizmetler.html">Hizmetler</a></li>
-                                <li><a href="hakkinda.html">Hakkında</a></li>
-                                <li><a href="iletisim.html">İletişim</a></li>
-                            </ul>
-                        </div>
-                    </nav>
+            // WhatsApp API URL
+            const phoneNumber = '905350786101';
+            const url = `https://wa.me/${phoneNumber}?text=${whatsappMessage}`;
 
-                    <!-- Page Header -->
-                    <header class="page-header fade-in">
-                        <div class="container">
-                            <h1>İletişime Geçin</h1>
-                            <p>Sorularınız, teklif talepleriniz veya teknik destek için bize ulaşın.</p>
-                        </div>
-                    </header>
+            // Open WhatsApp
+            window.open(url, '_blank');
 
-                    <!-- Contact Section -->
-                    <section class="contact-section">
-                        <div class="container">
-                            <div class="contact-container fade-in">
-                                <!-- Contact Form -->
-                                <div class="contact-form">
-                                    <form id="contactForm">
-                                        <div class="form-group">
-                                            <label for="name">İsim Soyisim</label>
-                                            <input type="text" id="name" required placeholder="Adınız Soyadınız">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="phone">Telefon</label>
-                                            <input type="tel" id="phone" required placeholder="05XX XXX XX XX">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="email">E-posta</label>
-                                            <input type="email" id="email" required placeholder="ornek@email.com">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="service">Hizmet Seçimi</label>
-                                            <select id="service">
-                                                <option value="tamir">Bilgisayar Tamir/Bakım</option>
-                                                <option value="web">Web Site Tasarımı</option>
-                                                <option value="mobil">Mobil Uygulama</option>
-                                                <option value="b2b">B2B Proje</option>
-                                                <option value="diger">Diğer</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="message">Mesajınız</label>
-                                            <textarea id="message" rows="5" required
-                                                placeholder="Mesajınızı buraya yazın..."></textarea>
-                                        </div>
-                                        <button type="submit" class="btn">Gönder</button>
-                                    </form>
-                                </div>
+            // Optional: Reset form
+            this.reset();
+        });
+    </script>
+</body>
 
-                                <!-- Contact Info -->
-                                <div class="contact-info-box">
-                                    <div class="info-item">
-                                        <i class="fas fa-map-marker-alt"></i>
-                                        <div>
-                                            <h4>Adres</h4>
-                                            <p>Kılıçdede Mahallesi Çubukçu Sokak No:3/B<br>Samsun / İlkadım</p>
-                                        </div>
-                                    </div>
-                                    <div class="info-item">
-                                        <i class="fas fa-phone"></i>
-                                        <div>
-                                            <h4>Telefon</h4>
-                                            <p><a href="tel:+905350786101" style="color: rgba(255,255,255,0.6);">+90 535
-                                                    078 61 01</a>
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="info-item">
-                                        <i class="fas fa-envelope"></i>
-                                        <div>
-                                            <h4>E-posta</h4>
-                                            <p>info@bayraktaryazilim.com</p>
-                                        </div>
-                                    </div>
-                                    <div class="info-item">
-                                        <i class="fab fa-whatsapp"></i>
-                                        <div>
-                                            <h4>WhatsApp</h4>
-                                            <p><a href="https://wa.me/905350786101" target="_blank"
-                                                    style="color: rgba(255,255,255,0.6);">Mesaj Gönder</a></p>
-                                        </div>
-                                    </div>
-
-                                    <!-- Map -->
-                                    <div class="map-container">
-                                        <iframe
-                                            src="https://maps.google.com/maps?q=K%C4%B1l%C4%B1%C3%A7dede%20Mahallesi%20%C3%87ubuk%C3%A7u%20Sokak%20No%3A3%2FB%20Samsun%20%C4%B0lkad%C4%B1m&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                                            allowfullscreen="" loading="lazy"></iframe>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- Footer -->
-                    <footer>
-                        <div class="container">
-                            <div class="footer-content">
-                                <div class="footer-col">
-                                    <h3>Bayraktar Yazılım</h3>
-                                    <p>Teknolojik çözümler ve profesyonel hizmetler.</p>
-                                    <div class="social-links" style="margin-top: 15px; display: flex; gap: 15px;">
-                                        <a href="https://www.instagram.com/saidbayraqtarss/" target="_blank"
-                                            style="color: #fff; font-size: 1.2rem;"><i class="fab fa-instagram"></i></a>
-                                        <a href="https://www.linkedin.com/in/said-bayraktar9" target="_blank"
-                                            style="color: #fff; font-size: 1.2rem;"><i class="fab fa-linkedin"></i></a>
-                                    </div>
-                                </div>
-                                <div class="footer-col">
-                                    <h3>İletişim</h3>
-                                    <p><i class="fas fa-map-marker-alt"></i> Kılıçdede Mah. Çubukçu Sok. No:3/B Samsun
-                                        İlkadım</p>
-                                    <p><i class="fas fa-phone"></i> +90 535 078 61 01</p>
-                                </div>
-                                <div class="footer-col">
-                                    <h3>Hızlı Linkler</h3>
-                                    <ul style="opacity: 0.7;">
-                                        <li><a href="hizmetler.html">Hizmetler</a></li>
-                                        <li><a href="iletisim.html">İletişim</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="footer-bottom">
-                                <p>&copy; 2025 Bayraktar Yazılım. Tüm hakları saklıdır.</p>
-                            </div>
-                        </div>
-                    </footer>
-
-                    <script src="js/main.js"></script>
-                    <script>
-                        // WhatsApp Form Submission
-                        document.getElementById('contactForm').addEventListener('submit', function (e) {
-                            e.preventDefault();
-
-                            // Get form values
-                            const name = document.getElementById('name').value;
-                            const phone = document.getElementById('phone').value;
-                            const email = document.getElementById('email').value;
-                            const service = document.getElementById('service').options[document.getElementById('service').selectedIndex].text;
-                            const message = document.getElementById('message').value;
-
-                            // Format WhatsApp message
-                            const whatsappMessage = `*Yeni İletişim Formu Mesajı*%0A%0A` +
-                                `*İsim:* ${name}%0A` +
-                                `*Telefon:* ${phone}%0A` +
-                                `*E-posta:* ${email}%0A` +
-                                `*Hizmet:* ${service}%0A` +
-                                `*Mesaj:* ${message}`;
-
-                            // WhatsApp API URL
-                            const phoneNumber = '905350786101';
-                            const url = `https://wa.me/${phoneNumber}?text=${whatsappMessage}`;
-
-                            // Open WhatsApp
-                            window.open(url, '_blank');
-
-                            // Optional: Reset form
-                            this.reset();
-                        });
-                    </script>
-                </body>
-
-                </html>
+</html>
