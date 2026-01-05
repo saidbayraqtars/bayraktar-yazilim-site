@@ -1,6 +1,6 @@
 /* Hero Section */
 .hero {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     position: relative;
@@ -9,6 +9,61 @@
     /* For fixed navbar */
     background: radial-gradient(circle at 20% 50%, rgba(22, 227, 255, 0.1) 0%, transparent 50%),
         radial-gradient(circle at 80% 20%, rgba(182, 0, 255, 0.1) 0%, transparent 50%);
+}
+
+/* Service Badges */
+.service-badges {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.badge-primary {
+    background: linear-gradient(135deg, rgba(22, 227, 255, 0.2), rgba(22, 227, 255, 0.05));
+    border: 1px solid rgba(22, 227, 255, 0.4);
+    color: var(--primary-neon);
+    box-shadow: 0 0 15px rgba(22, 227, 255, 0.2);
+    animation: pulse-badge 2s infinite;
+}
+
+.badge-secondary {
+    background: linear-gradient(135deg, rgba(182, 0, 255, 0.2), rgba(182, 0, 255, 0.05));
+    border: 1px solid rgba(182, 0, 255, 0.4);
+    color: var(--secondary-neon);
+    box-shadow: 0 0 15px rgba(182, 0, 255, 0.2);
+}
+
+@keyframes pulse-badge {
+
+    0%,
+    100% {
+        box-shadow: 0 0 15px rgba(22, 227, 255, 0.2);
+    }
+
+    50% {
+        box-shadow: 0 0 25px rgba(22, 227, 255, 0.4);
+    }
+}
+
+.hero-description {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 35px;
+    max-width: 550px;
 }
 
 .hero-content {
@@ -70,6 +125,46 @@
     100% {
         transform: translateY(0px);
     }
+}
+
+/* Corporate Features Bar */
+.corporate-features {
+    padding: 40px 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(22, 227, 255, 0.03) 50%, transparent 100%);
+}
+
+.features-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 30px;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+}
+
+.feature-item i {
+    font-size: 2rem;
+    color: var(--primary-neon);
+}
+
+.feature-item strong {
+    display: block;
+    color: #fff;
+    font-size: 1rem;
+    margin-bottom: 2px;
+}
+
+.feature-item span {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.85rem;
 }
 
 /* Quick Services */
@@ -161,6 +256,19 @@
         width: 300px;
         height: 300px;
     }
+
+    .features-bar {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .service-badges {
+        justify-content: center;
+    }
+
+    .hero-description {
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 @media (max-width: 576px) {
@@ -176,5 +284,23 @@
     .cta-buttons {
         flex-direction: column;
         align-items: center;
+    }
+
+    .features-bar {
+        grid-template-columns: 1fr;
+    }
+
+    .feature-item {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .feature-item>div {
+        text-align: left;
+    }
+
+    .badge {
+        padding: 8px 14px;
+        font-size: 0.75rem;
     }
 }
